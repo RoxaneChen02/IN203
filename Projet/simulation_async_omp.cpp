@@ -110,7 +110,7 @@ void simulation(bool affiche)
 
     épidémie::ContexteGlobal contexte;
     // contexte.déplacement_maximal = 1; <= Si on veut moins de brassage
-    contexte.taux_population = 400'000;
+    contexte.taux_population = 100'000;
     //contexte.taux_population = 1'000;
     contexte.interactions.β = 60.;
     std::vector<épidémie::Individu> population;
@@ -191,7 +191,7 @@ void simulation(bool affiche)
         màjStatistique(grille, population);
         // On parcout la population pour voir qui est contaminé et qui ne l'est pas, d'abord pour la grippe puis pour l'agent pathogène
         std::size_t compteur_grippe = 0, compteur_agent = 0, mouru = 0;
-        int nombre_thread  = 2;
+        int nombre_thread  = 4;
 
         #pragma omp parallel for schedule(static) reduction(+:compteur_grippe,compteur_agent,mouru) num_threads(nombre_thread) ordered
 
@@ -272,7 +272,8 @@ void simulation(bool affiche)
             MPI_Send(&pret0, 1, MPI_C_BOOL, 1, 0, MPI_COMM_WORLD);
             //recevoir grille et jours_écoulés 
             MPI_Iprobe(1, 0, MPI_COMM_WORLD, &flag, &status);
-            
+            pret0=false;
+            MPI_Send(&pret0, 1, MPI_C_BOOL, 1, 0, MPI_COMM_WORLD);
             if(flag==true){
             MPI_Recv(&jours, 1, MPI_INT, 1,0, MPI_COMM_WORLD,&status);
             MPI_Recv(grille_bis.getStatistiques().data(),3*largeur_grille*hauteur_grille,MPI_INT,1,0, MPI_COMM_WORLD,&status);

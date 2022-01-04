@@ -269,8 +269,8 @@ void simulation(bool affiche)
             MPI_Recv(grille_bis.getStatistiques().data(),3*largeur_grille*hauteur_grille,MPI_INT,1,0, MPI_COMM_WORLD,&status);
 
             }
-            //pret0=false;
-            //MPI_Send(&pret0, 1, MPI_C_BOOL, 1, 0, MPI_COMM_WORLD);
+            pret0=false;
+            MPI_Send(&pret0, 1, MPI_C_BOOL, 1, 0, MPI_COMM_WORLD);
             if (affiche) afficheSimulation(écran, grille_bis, jours);
             
 
