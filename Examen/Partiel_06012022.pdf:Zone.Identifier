@@ -1,0 +1,3 @@
+[ZoneTransfer]
+ZoneId=3
+HostUrl=https://s3.us-west-2.amazonaws.com/temporary.notion-static.com/Export-a00d1525-9633-4f33-a550-018b1813dc0e/Partiel_06012022.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220106%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220106T104242Z&X-Amz-Expires=604800&X-Amz-Signature=b884aa2dce8dfe79d37c497a98a2e20b24a59003de4bed093274ecc8e17fff34&X-Amz-SignedHeaders=host&x-id=GetObject
